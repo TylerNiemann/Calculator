@@ -9,10 +9,10 @@
 </head>
 <body>
     <div id="calculator">
-        <div id="display">0444444</div>
+        <div id="display">0</div>
         <div id="grid">
-            <button id="clear" value="clear">Clear</button>
-            <button id="delete" value="delete">Delete</button>
+            <button id="clear" onclick="window.location.reload(true)">Clear</button>
+            <button id="delete" onclick="deleteOne()">Delete</button>
             <button class="displayable" id="num" onclick="clickedInput('7')">7</button>
             <button class="displayable" id="num" onclick="clickedInput('8')">8</button>
             <button class="displayable" id="num" onclick="clickedInput('9')">9</button>
