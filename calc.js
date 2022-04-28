@@ -7,20 +7,18 @@ const display = document.getElementById('display');
 //math functions
 let add = (inputOne,inputTwo) => inputOne + inputTwo;
 
-let subtract = (inputOne,inputTwo) => inputOne - inputTwo;
+let subtract = (inputOne,inputTwo) => inputTwo- inputOne;
 
 let multiply= (inputOne,inputTwo) => inputOne * inputTwo;
 
-let divide = (inputOne,inputTwo) => {
-    if(inputTwo === 0) alert("Stop, can't divide by 0");
-    else inputOne / inputTwo;
-}
+let divide = (inputOne,inputTwo) => inputOne === 0 ? alert("Stop, can't divide by 0") : inputTwo / inputOne;
+
 
 let operate = (inputOne, inputTwo, operator) => {
     if(operator == '+') return add(inputOne,inputTwo);
     else if(operator == '-') return subtract(inputOne,inputTwo);
     else if(operator == '*')return multiply(inputOne,inputTwo);
-    else return divide(inputOne,inputTwo);
+    else if (operator == '/') return divide(inputOne,inputTwo);
 }
 //Takes clicked input and saves && displays it
 let clickedInput = (num) => {
@@ -42,8 +40,16 @@ let deleteOne = () => {
 }
 
 let clickedOperator = (sign) => {
+    if (inputTwo === 0){
     inputTwo = parseInt(inputOne);
+    }
     inputOne = 0;
     operator = sign;
     return display.textContent = `${inputTwo} ${operator}`;
+}
+
+let clickedEqualTo = () => {
+    inputOne = parseInt(inputOne);
+    inputTwo = operate(inputOne,inputTwo,operator);
+    return display.textContent = (inputTwo);    
 }
