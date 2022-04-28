@@ -59,7 +59,15 @@ let clickedEqualTo = () => {
     if(inputTwo == 0)return window.location.reload(true);
     inputOne = parseFloat(inputOne);
     inputTwo = operate(inputOne,inputTwo,operator);
-    inputOne = 0;
     operator = undefined;
     return display.textContent = `${inputTwo}`;    
 }
+
+//Adds ability to see what button mouse is hovering
+let hover = (e) => e.target.style.backgroundColor = 'grey';
+
+let hoverExit = (e) => e.target.style.backgroundColor = '';
+
+const btn = Array.from(document.querySelectorAll('button'));
+btn.forEach(button => button.addEventListener('mouseover', hover));
+btn.forEach(button => button.addEventListener('mouseleave', hoverExit));
