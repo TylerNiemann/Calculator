@@ -24,7 +24,11 @@ let operate = (inputOne, inputTwo, operator) => {
 //Takes clicked input and saves && displays it
 let clickedInput = (num) => {
    inputOne === 0 ? inputOne = num : inputOne = inputOne + num;
-   inputTwo !== 0 ? display.textContent =`${inputTwo} ${operator} ${inputOne}` : display.textContent = `${inputOne}`;
+   if(inputTwo !== 0){
+        if(operator != undefined) display.textContent =`${inputTwo} ${operator} ${inputOne}`
+        else return window.location.reload(true);
+   } 
+   else display.textContent = `${inputOne}`;
 }
 //Deletes last inputted element
 let deleteOne = () => {
