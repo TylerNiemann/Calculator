@@ -6,7 +6,11 @@ let multiply= (inputOne,inputTwo) => inputOne * inputTwo;
 
 let divide = (inputOne,inputTwo) => inputOne / inputTwo;
 
-console.log(add(1,2));
-console.log(subtract(4,12));
-console.log(multiply(4,12));
-console.log(divide(12,4));
+let operate = (inputOne, inputTwo, operator) => {
+    if(operator == '+') return add(inputOne,inputTwo);
+    else if(operator == '-') return subtract(inputOne,inputTwo);
+    else if(operator == '*')return multiply(inputOne,inputTwo);
+    else return divide(inputOne,inputTwo);
+}
+
+console.log(operate(3,4,'/'));
