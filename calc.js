@@ -41,22 +41,25 @@ let deleteOne = () => {
 }
 
 let clickedOperator = (sign) => {
+    //Adds ability to continue calculating without having to press '='
     if (operator !=  undefined){
         newOperator = operator;
         operator = sign;
-        inputTwo = operate(parseInt(inputOne),inputTwo,newOperator);
+        inputTwo = operate(parseFloat(inputOne),inputTwo,newOperator);
         inputOne = 0;
         return display.textContent = `${inputTwo} ${operator}`;
     }
-    if (inputTwo === 0)inputTwo = parseInt(inputOne);
+    if (inputTwo === 0)inputTwo = parseFloat(inputOne);
     inputOne = 0;
     operator = sign;
     return display.textContent = `${inputTwo} ${operator}`;
 }
 
 let clickedEqualTo = () => {
-    inputOne = parseInt(inputOne);
+    if(inputTwo == 0)return window.location.reload(true);
+    inputOne = parseFloat(inputOne);
     inputTwo = operate(inputOne,inputTwo,operator);
     inputOne = 0;
+    operator = undefined;
     return display.textContent = `${inputTwo}`;    
 }
