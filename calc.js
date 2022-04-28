@@ -1,6 +1,7 @@
 //global variables
 let inputOne = 0;
 let inputTwo = 0;
+let operator;
 const display = document.getElementById('display');
 
 //math functions
@@ -23,14 +24,26 @@ let operate = (inputOne, inputTwo, operator) => {
 }
 //Takes clicked input and saves && displays it
 let clickedInput = (num) => {
-   if (inputOne === 0) inputOne = num;
-   else inputOne = inputOne + num;
-   return display.textContent = `${inputOne}`;
+   inputOne === 0 ? inputOne = num : inputOne = inputOne + num;
+   inputTwo !== 0 ? display.textContent =`${inputTwo} ${operator} ${inputOne}` : display.textContent = `${inputOne}`;
 }
+//Deletes last inputted element
 let deleteOne = () => {
-    if(inputOne.length === 1) return display.textContent = '0';
+    if (inputTwo !== 0){
+        if(inputOne.length === 1) return display.textContent = `${inputTwo} ${operator}`;
+        inputOne = inputOne.substring(0,inputOne.length -1)
+        return display.textContent =`${inputTwo} ${operator} ${inputOne}`
+    }
     else {
+        if(inputOne.length === 1) return display.textContent = '0';
         inputOne = inputOne.substring(0,inputOne.length -1)
         return display.textContent = `${inputOne}`;
     }
+}
+
+let clickedOperator = (sign) => {
+    inputTwo = parseInt(inputOne);
+    inputOne = 0;
+    operator = sign;
+    return display.textContent = `${inputTwo} ${operator}`;
 }
