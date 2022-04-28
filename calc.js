@@ -4,6 +4,25 @@ let inputTwo = 0;
 let operator;
 let newOperator;
 const display = document.getElementById('display');
+window.addEventListener('keydown', handleKeyboardInput)
+
+//Adds ability to see what button mouse is hovering
+let hover = (e) => e.target.style.backgroundColor = 'grey';
+
+let hoverExit = (e) => e.target.style.backgroundColor = '';
+
+const btn = Array.from(document.querySelectorAll('button'));
+btn.forEach(button => button.addEventListener('mouseover', hover));
+btn.forEach(button => button.addEventListener('mouseleave', hoverExit));
+
+function handleKeyboardInput(e) {
+    if (e.key >= 0 && e.key <= 9) clickedInput(e.key)
+    if (e.key === '.') clickedInput('.')
+    if (e.key === '=' || e.key === 'Enter') clickedEqualTo()
+    if (e.key === 'Backspace') deleteOne()
+    if (e.key === 'Escape') return window.location.reload(true);
+    if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/')clickedOperator(e.key);
+  }
 
 //math functions
 let add = (inputOne,inputTwo) => inputOne + inputTwo;
@@ -12,7 +31,7 @@ let subtract = (inputOne,inputTwo) => inputTwo- inputOne;
 
 let multiply= (inputOne,inputTwo) => inputOne * inputTwo;
 
-let divide = (inputOne,inputTwo) => inputOne === 0 ? alert("Stop, can't divide by 0") : inputTwo / inputOne;
+let divide = (inputOne,inputTwo) => inputOne === 0 ? evilZero() : inputTwo / inputOne;
 
 
 let operate = (inputOne, inputTwo, operator) => {
@@ -67,11 +86,7 @@ let clickedEqualTo = () => {
     return display.textContent = `${inputTwo}`;    
 }
 
-//Adds ability to see what button mouse is hovering
-let hover = (e) => e.target.style.backgroundColor = 'grey';
-
-let hoverExit = (e) => e.target.style.backgroundColor = '';
-
-const btn = Array.from(document.querySelectorAll('button'));
-btn.forEach(button => button.addEventListener('mouseover', hover));
-btn.forEach(button => button.addEventListener('mouseleave', hoverExit));
+let evilZero = () => {
+    alert("Stop, can't divide by 0")
+    window.location.reload(true);
+}
