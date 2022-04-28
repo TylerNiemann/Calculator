@@ -15,6 +15,7 @@ const btn = Array.from(document.querySelectorAll('button'));
 btn.forEach(button => button.addEventListener('mouseover', hover));
 btn.forEach(button => button.addEventListener('mouseleave', hoverExit));
 
+//Adds keyboard support
 function handleKeyboardInput(e) {
     if (e.key >= 0 && e.key <= 9) clickedInput(e.key)
     if (e.key === '.') clickedInput('.')
