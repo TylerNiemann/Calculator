@@ -2,6 +2,7 @@
 let inputOne = 0;
 let inputTwo = 0;
 let operator;
+let newOperator;
 const display = document.getElementById('display');
 
 //math functions
@@ -40,9 +41,14 @@ let deleteOne = () => {
 }
 
 let clickedOperator = (sign) => {
-    if (inputTwo === 0){
-    inputTwo = parseInt(inputOne);
+    if (operator !=  undefined){
+        newOperator = operator;
+        operator = sign;
+        inputTwo = operate(parseInt(inputOne),inputTwo,newOperator);
+        inputOne = 0;
+        return display.textContent = `${inputTwo} ${operator}`;
     }
+    if (inputTwo === 0)inputTwo = parseInt(inputOne);
     inputOne = 0;
     operator = sign;
     return display.textContent = `${inputTwo} ${operator}`;
@@ -51,5 +57,6 @@ let clickedOperator = (sign) => {
 let clickedEqualTo = () => {
     inputOne = parseInt(inputOne);
     inputTwo = operate(inputOne,inputTwo,operator);
-    return display.textContent = (inputTwo);    
+    inputOne = 0;
+    return display.textContent = `${inputTwo}`;    
 }
